@@ -1,0 +1,62 @@
+<!-- Please add this code under snippet/wishlist.liquid -->
+
+<style>
+  .wish_icon {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.wish_icon.wishAdded svg path {
+    fill: red;
+    stroke: red;
+}
+</style>
+
+<!-- Wishlist Button -->
+<button id="wishlist-{{ productid }}" class="wish_icon" title="Add to Wishlist">
+
+
+<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill="transparent" stroke="#333" d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"/>
+</svg> 
+</button> <!-- Replace 123 with a dynamic product ID -->
+
+<!-- Include jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- Wishlist Functionality -->
+<script>
+  // Ensure the script executes after the DOM is fully loaded
+  $(document).ready(function () {
+    // Add click event listener to the button
+    $("#wishlist-{{ productid }}").click(function () {
+
+      // Store the product ID in localStorage
+      let wishlistID = "{{ productid }}"; // Replace with dynamic product ID
+      localStorage.setItem("wishID-" + wishlistID, wishlistID);
+
+      // Optional: Indicate success or update the button's UI
+      // $(this).html(``).prop("disabled", true);
+
+      setTimeout(() => {
+      let wishlistID = '{{ productid }}';
+      let wishAdded = localStorage.getItem("wishID-{{ productid }}");
+        if(wishAdded == wishlistID){
+          $('#wishlist-{{ productid }}').addClass('wishAdded')
+        }
+      }, 100);
+      
+    });
+
+    setTimeout(() => {
+      let wishlistID = '{{ productid }}';
+      let wishAdded = localStorage.getItem("wishID-{{ productid }}");
+        if(wishAdded == wishlistID){
+          $('#wishlist-{{ productid }}').addClass('wishAdded')
+        }
+      }, 100);
+  });
+</script>
